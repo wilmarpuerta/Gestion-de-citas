@@ -1,5 +1,6 @@
 
 using Gestion_de_citas.Data;
+using Gestion_de_citas.Dtos;
 using Gestion_de_citas.Models;
 
 namespace Gestion_de_citas.Services.Pacientes
@@ -11,32 +12,65 @@ namespace Gestion_de_citas.Services.Pacientes
         {
             _baseContext = baseContext;
         }
-        public void AddPaciente(Paciente paciente)
+        public void AddPaciente(PacienteDto paciente)
         {
+            paciente.Estado = "Activo";
             _baseContext.Add(paciente);
             _baseContext.SaveChanges();
         }
+        
 
         public void DeletePaciente(Paciente paciente)
         {
             throw new NotImplementedException();
         }
 
-        public Paciente GetPacienteById(int id)
+        public PacienteDto GetPacienteById(int id)
         {
-           return _baseContext.Pacientes.FirstOrDefault(p => p.Id == id);
+           var paciente = _baseContext.Pacientes.FirstOrDefault(p => p.Id == id);
+           PacienteDto pacienteDto = new PacienteDto(
+            paciente.Id,
+            paciente.Nombres,
+            paciente.Apellidos,
+            paciente.FechaNacimiento,
+            paciente.Correo,
+            paciente.Telefono,
+            paciente.Direccion,
+            paciente.Estado.ToString() 
+           );
+           return pacienteDto;
 
         }
 
-        public IEnumerable<Paciente> GetPacientes()
+        public IEnumerable<PacienteDto> GetPacientes()
         {
-            return _baseContext.Pacientes.ToList();
+            var pacientes = _baseContext.Pacientes.ToList();
+            List<PacienteDto> pacientesDto = new List<PacienteDto>();
+
+            foreach (var paciente in pacientes)
+            {
+                PacienteDto pacienteDto = new PacienteDto
+                (
+                    paciente.Id,
+                    paciente.Nombres,
+                    paciente.Apellidos,
+                    paciente.FechaNacimiento,
+                    paciente.Correo,
+                    paciente.Telefono,
+                    paciente.Direccion,
+                    paciente.Estado.ToString()
+                );
+
+                pacientesDto.Add(pacienteDto);
+            }
+            
+            return pacientesDto;
         }
 
         public void UpdatePaciente(int id, Paciente paciente)
         {
             var pacienteUpdate = _baseContext.Pacientes.FirstOrDefault(p => p.Id ==id);
-            
+
             pacienteUpdate.Nombres = paciente.Nombres;
             pacienteUpdate.Apellidos = paciente.Apellidos;
             pacienteUpdate.FechaNacimiento = paciente.FechaNacimiento;

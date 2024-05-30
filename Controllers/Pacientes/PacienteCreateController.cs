@@ -1,4 +1,5 @@
 
+using Gestion_de_citas.Dtos;
 using Gestion_de_citas.Models;
 using Gestion_de_citas.Services.Pacientes;
 using Microsoft.AspNetCore.Mvc;
@@ -17,7 +18,7 @@ namespace Gestion_de_citas.Controllers.Pacientes
         }
 
         [HttpPost("Creacion")]
-        public IActionResult CrearPaciente([FromBody] Paciente paciente)
+        public IActionResult CrearPaciente([FromBody] PacienteDto paciente)
         {
             _pacientesRepository.AddPaciente(paciente);
             return Ok(paciente);
