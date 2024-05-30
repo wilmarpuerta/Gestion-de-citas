@@ -9,14 +9,14 @@ CREATE Table Pacientes (
     Correo VARCHAR(125),
     Telefono VARCHAR(75),
     Direccion VARCHAR(125),
-    Estado ENUM("activo", "inactivo")
+    Estado ENUM("Activo", "Inactivo")
 );
 
 CREATE Table Especialidades (
     Id INTEGER PRIMARY KEY AUTO_INCREMENT,
     Nombre VARCHAR(125),
     Descripcion TEXT,
-    Estado ENUM("activo", "inactivo")
+    Estado ENUM("Activo", "Inactivo")
 );
 
 CREATE TABLE Medicos (
@@ -25,7 +25,7 @@ CREATE TABLE Medicos (
     Especialidad INT,
     Correo VARCHAR(125) UNIQUE,
     Telefono VARCHAR(75),
-    Estado ENUM("activo", "inactivo"),
+    Estado ENUM("Activo", "Inactivo"),
     Foreign Key (Especialidad) REFERENCES Especialidades(Id)
 );
 
@@ -35,7 +35,7 @@ CREATE Table Citas (
     MedicoId INT,
     PacienteId INT,
     Fecha DATE,
-    Estado ENUM("activo", "inactivo"),
+    Estado ENUM("Activo", "Inactivo"),
     Foreign Key (MedicoId) REFERENCES Medicos(Id),
     Foreign Key (PacienteId) REFERENCES Pacientes(Id)
 );
@@ -44,6 +44,6 @@ CREATE Table Tratamientos (
     Id INTEGER PRIMARY KEY AUTO_INCREMENT,
     CitaId INT,
     Descripcion TEXT,
-    Estado ENUM("activo", "inactivo"),
+    Estado ENUM("Activo", "Inactivo"),
     Foreign Key (CitaId) REFERENCES Citas(Id)
 )
