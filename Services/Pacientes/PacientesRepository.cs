@@ -33,9 +33,17 @@ namespace Gestion_de_citas.Services.Pacientes
             return _baseContext.Pacientes.ToList();
         }
 
-        public void UpdatePaciente(Paciente paciente)
+        public void UpdatePaciente(int id, Paciente paciente)
         {
-            var pacienteUpdate = GetPacienteById(paciente.Id);
+            var pacienteUpdate = _baseContext.Pacientes.FirstOrDefault(p => p.Id ==id);
+            
+            pacienteUpdate.Nombres = paciente.Nombres;
+            pacienteUpdate.Apellidos = paciente.Apellidos;
+            pacienteUpdate.FechaNacimiento = paciente.FechaNacimiento;
+            pacienteUpdate.Correo = paciente.Correo;
+            pacienteUpdate.Telefono = paciente.Telefono;
+            pacienteUpdate.Direccion = paciente.Direccion;
+
             _baseContext.Update(pacienteUpdate);
             _baseContext.SaveChanges();
         }

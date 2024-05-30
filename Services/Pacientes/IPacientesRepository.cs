@@ -8,7 +8,7 @@ namespace Gestion_de_citas.Services.Pacientes
         IEnumerable<Paciente> GetPacientes();
         Paciente GetPacienteById(int id);
         void AddPaciente(Paciente paciente);
-        void UpdatePaciente(Paciente paciente);
+        void UpdatePaciente(int id, Paciente paciente);
         void DeletePaciente(Paciente paciente);
     }
 }
