@@ -18,7 +18,7 @@ namespace Gestion_de_citas.Controllers.Pacientes
         }
 
         [HttpPost("Creacion")]
-        public IActionResult CrearPaciente([FromBody] PacienteDto paciente)
+        public IActionResult CrearPaciente([FromBody] Paciente paciente)
         {
             _pacientesRepository.AddPaciente(paciente);
             return Ok(paciente);

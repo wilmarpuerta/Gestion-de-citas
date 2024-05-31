@@ -17,13 +17,13 @@ namespace Gestion_de_citas.Controllers.Pacientes
         }
 
         [HttpGet("lista")]
-        public IEnumerable<PacienteDto> GetPacientes()
+        public IEnumerable<Paciente> GetPacientes()
         {
             return _pacientesRepository.GetPacientes();
         }
 
         [HttpGet("lista/{id}")]
-        public PacienteDto GetPacienteById(int id)
+        public Paciente GetPacienteById(int id)
         {
             return _pacientesRepository.GetPacienteById(id);
         }

@@ -6,10 +6,10 @@ namespace Gestion_de_citas.Services.Pacientes
 {
     public interface IPacientesRepository
     {
-        IEnumerable<PacienteDto> GetPacientes();
-        PacienteDto GetPacienteById(int id);
-        void AddPaciente(PacienteDto paciente);
+        IEnumerable<Paciente> GetPacientes();
+        Paciente GetPacienteById(int id);
+        void AddPaciente(Paciente paciente);
         void UpdatePaciente(int id, Paciente paciente);
-        void DeletePaciente(Paciente paciente);
+        void DeletePaciente(int id);
     }
 }
