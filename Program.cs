@@ -1,5 +1,9 @@
 using Gestion_de_citas.Data;
+using Gestion_de_citas.Services.Citas;
+using Gestion_de_citas.Services.Especialidades;
+using Gestion_de_citas.Services.Medicos;
 using Gestion_de_citas.Services.Pacientes;
+using Gestion_de_citas.Services.Tratamientos;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -10,7 +14,11 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddControllers();
 
+builder.Services.AddScoped<ICitasRepository, CitasRepository>();
+builder.Services.AddScoped<IEspecialidadesRepository, EspecialidadesRepository>();
+builder.Services.AddScoped<IMedicosRepository, MedicosRepository>();
 builder.Services.AddScoped<IPacientesRepository, PacientesRepository>();
+builder.Services.AddScoped<ITratamientosRepository, TratamientosRepository>();
 
 builder.Services.AddDbContext<BaseContext> (options => 
     options.UseMySql(
