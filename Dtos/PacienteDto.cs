@@ -15,16 +15,5 @@ namespace Gestion_de_citas.Dtos
         public string Telefono { get; set; }
         public string Direccion { get; set; }
         public string Estado { get; set; }
-
-        public PacienteDto(int id, string name, string Apellidos, DateTime FechaNacimiento, string Correo, string Telefono, string Direccion, string Estado){
-            this.Id = id;
-            this.Nombres = name;
-            this.Apellidos = Apellidos;
-            this.FechaNacimiento = FechaNacimiento;
-            this.Correo = Correo;
-            this.Telefono = Telefono;
-            this.Direccion = Direccion;
-            this.Estado = Estado;
-        }
     }
 }
