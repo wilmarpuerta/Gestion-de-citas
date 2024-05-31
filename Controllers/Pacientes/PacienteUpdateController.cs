@@ -1,10 +1,13 @@
 
+using Gestion_de_citas.Dtos;
 using Gestion_de_citas.Models;
 using Gestion_de_citas.Services.Pacientes;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Gestion_de_citas.Controllers.Pacientes
 {
+    [ApiController]
+    [Route("api/[controller]")]
     public class PacienteUpdateController : ControllerBase
     {
         private readonly IPacientesRepository _pacientesRepository;
@@ -14,8 +17,8 @@ namespace Gestion_de_citas.Controllers.Pacientes
             _pacientesRepository = pacientesRep;
         }
 
-        [HttpPut("Actualizar")]
-        public IActionResult PacienteUpdate(int id, [FromBody] Paciente paciente)
+        [HttpPut("Actualizar/{id}")]
+        public IActionResult UpdatePaciente(int id, Paciente paciente)
         {
             _pacientesRepository.UpdatePaciente(id, paciente);
             return Ok("Paciente actualizado correctamente");
