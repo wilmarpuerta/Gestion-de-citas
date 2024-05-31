@@ -23,7 +23,7 @@ namespace Gestion_de_citas.Controllers.Pacientes
                 return Ok("Paciente eliminado correctamente");
             }
             catch{
-                return BadRequest("Error al eliminar pacirnte");
+                return BadRequest("Error al eliminar paciente");
             }
         }
     }
