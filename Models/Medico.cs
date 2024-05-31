@@ -9,6 +9,6 @@ namespace Gestion_de_citas.Models
         public int Especialidad { get; set; }
         public string Correo { get; set; }
         public string Telefono { get; set; }
-        public enum Estado { Activo, Inactivo}
+        public string Estado { get; set; }
     }
 }
