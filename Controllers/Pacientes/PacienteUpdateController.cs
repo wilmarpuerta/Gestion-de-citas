@@ -1,5 +1,4 @@
 
-using Gestion_de_citas.Dtos;
 using Gestion_de_citas.Models;
 using Gestion_de_citas.Services.Pacientes;
 using Microsoft.AspNetCore.Mvc;
@@ -20,8 +19,13 @@ namespace Gestion_de_citas.Controllers.Pacientes
         [HttpPut("Actualizar/{id}")]
         public IActionResult UpdatePaciente(int id, Paciente paciente)
         {
-            _pacientesRepository.UpdatePaciente(id, paciente);
-            return Ok("Paciente actualizado correctamente");
+            try{
+                _pacientesRepository.UpdatePaciente(id, paciente);
+                return Ok("Paciente actualizado correctamente");
+            }
+            catch{
+                return BadRequest("Error al actualizar paciente");
+            }
         }
     }
 }

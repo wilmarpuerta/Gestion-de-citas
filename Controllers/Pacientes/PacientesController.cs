@@ -1,5 +1,4 @@
 
-using Gestion_de_citas.Dtos;
 using Gestion_de_citas.Models;
 using Gestion_de_citas.Services.Pacientes;
 using Microsoft.AspNetCore.Mvc;
@@ -19,13 +18,27 @@ namespace Gestion_de_citas.Controllers.Pacientes
         [HttpGet("lista")]
         public IEnumerable<Paciente> GetPacientes()
         {
-            return _pacientesRepository.GetPacientes();
+            try
+            {
+                return _pacientesRepository.GetPacientes();
+            }
+            catch
+            {
+                return (IEnumerable<Paciente>)BadRequest("Error al traer los pacientes");
+            }
         }
 
         [HttpGet("lista/{id}")]
         public Paciente GetPacienteById(int id)
         {
-            return _pacientesRepository.GetPacienteById(id);
+            var paciente = _pacientesRepository.GetPacienteById(id);
+
+            if (!ModelState.IsValid)
+            {
+                NotFound("Error el paciente no ha sido encontrado");
+            }
+
+            return paciente;
         }
     }
 }

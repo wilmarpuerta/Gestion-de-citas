@@ -1,6 +1,4 @@
 
-
-using Gestion_de_citas.Models;
 using Gestion_de_citas.Services.Pacientes;
 using Microsoft.AspNetCore.Mvc;
 

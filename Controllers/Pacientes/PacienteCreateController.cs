@@ -20,8 +20,15 @@ namespace Gestion_de_citas.Controllers.Pacientes
         [HttpPost("Creacion")]
         public IActionResult CrearPaciente([FromBody] Paciente paciente)
         {
-            _pacientesRepository.AddPaciente(paciente);
-            return Ok(paciente);
+            try
+            {
+                _pacientesRepository.AddPaciente(paciente);
+                return Ok(paciente);
+            }
+            catch
+            {
+                return BadRequest("Error al crear paciente");
+            }
         }
         
     }
