@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace Gestion_de_citas.Models
@@ -15,6 +16,8 @@ namespace Gestion_de_citas.Models
         public string Telefono { get; set; }
         public string Direccion { get; set; }
         public string Estado { get; set; }
+        [JsonIgnore]
+        public List<Cita> Citas { get; set; }
     }
     
 }

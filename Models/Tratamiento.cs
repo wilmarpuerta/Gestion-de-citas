@@ -6,6 +6,7 @@ namespace Gestion_de_citas.Models
     {
         public int Id { get; set; }
         public int CitaId { get; set; }
+        public Cita Cita { get; set; }
         public string Descripcion { get; set; }
         public string Estado { get; set; }
     }
